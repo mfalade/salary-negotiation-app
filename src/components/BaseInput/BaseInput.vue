@@ -17,7 +17,8 @@ export default {
   inheritAttrs: false,
   props: {
     label: {
-      required: true,
+      type: [String, Number],
+      default: '',
     },
     value: [String, Number],
   },
