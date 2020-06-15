@@ -1,6 +1,6 @@
 export default (value) => {
   if (value === undefined || value === null) {
-    return null;
+    return '';
   }
 
   return value.toLocaleString('de-DE', {

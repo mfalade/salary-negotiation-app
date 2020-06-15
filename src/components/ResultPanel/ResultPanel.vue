@@ -11,33 +11,33 @@
       </div>
     </div>
     <div class="mt-3">
-      <p class="mb-3">
-        Employee's minimum expectation:
-        <strong>{{ employeesExpectation | currency }}</strong>
+      <p class="mb-2">
+        Employer's maximum offer:
+        <strong>{{ employersOffering | currency }}</strong>
       </p>
       <p class="mb-2">
-        Employer's maximum offering:
-        <strong>{{ employersOffering | currency }}</strong>
+        Employee's minimum expectation:
+        <strong>{{ employeesExpectation | currency }}</strong>
       </p>
     </div>
   </section>
 </template>
 
 <script>
-import IconSuccess from "@/components/Icons/Success.vue";
-import IconFailure from "@/components/Icons/Failure.vue";
+import IconSuccess from '@/components/Icons/Success.vue';
+import IconFailure from '@/components/Icons/Failure.vue';
 
 export default {
-  name: "ResultPanel",
+  name: 'ResultPanel',
   components: { IconSuccess, IconFailure },
   props: {
     employeesExpectation: Number,
-    employersOffering: Number
+    employersOffering: Number,
   },
   computed: {
     isSuccess: function() {
       return this.employersOffering >= this.employeesExpectation;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center app-tab">
-    <form @submit.prevent="handleFormSubmit">
+  <section class="d-flex justify-content-center align-items-center app-tab">
+    <div>
       <h2>{{ id | capitalize }} dashboard</h2>
-      <div v-if="!state.isFormSubmitted">
+      <form v-if="!state.isFormSubmitted" @submit.prevent="handleFormSubmit">
         <base-input
           v-model.number="state.inputValue"
           required
@@ -12,27 +12,24 @@
           min="0"
         />
         <b-button type="submit" class="mt-3">Submit</b-button>
+      </form>
+      <div v-else class="text-center mt-4">
+        Your value has been registered
       </div>
-
-      <template v-else>
-        <div class="text-center mt-4">
-          <p class="mt-2">You have successfully entered your desired value.</p>
-        </div>
-      </template>
-    </form>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import BaseInput from "@/components/BaseInput/BaseInput.vue";
+import BaseInput from '@/components/BaseInput/BaseInput.vue';
 
 export default {
-  name: "AppTab",
+  name: 'AppTab',
   components: { BaseInput },
   props: {
     id: { type: String, isRequired: true },
     description: { type: String, isRequired: true },
-    state: { type: Object, isRequired: true }
+    state: { type: Object, isRequired: true },
   },
   methods: {
     handleFormSubmit: function() {
@@ -40,9 +37,9 @@ export default {
         return;
       }
       this.state.isFormSubmitted = true;
-      this.$emit("input-value-submitted");
-    }
-  }
+      this.$emit('input-value-submitted');
+    },
+  },
 };
 </script>
 
