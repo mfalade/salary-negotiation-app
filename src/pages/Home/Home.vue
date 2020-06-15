@@ -7,43 +7,44 @@
         </b-tab>
       </b-tabs>
     </b-card>
-    <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3">
-      Start Over
-    </b-button>
+    <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3">Start Over</b-button>
     <b-modal ref="result-modal" hide-footer>
       <result-panel
         :employeesExpectation="employee.state.inputValue"
         :employersOffering="employer.state.inputValue"
       />
+      <weather-display :city="forecastCity" />
     </b-modal>
   </section>
 </template>
 
 <script>
-import AppTab from '@/components/Tab/Tab.vue';
-import ResultPanel from '@/components/ResultPanel/ResultPanel.vue';
-
-import { employeeTabSettings, employerTabSettings } from '@/constants';
+import AppTab from "@/components/Tab/Tab.vue";
+import ResultPanel from "@/components/ResultPanel/ResultPanel.vue";
+import WeatherDisplay from "@/components/WeatherDisplay/WeatherDisplay.vue";
+import { TAB_SETTING, DEFAULT_CITY } from "@/constants";
+import { getWeatherInCity } from "@/services/weather";
 
 const initialState = {
   inputValue: null,
-  isFormSubmitted: false,
+  isFormSubmitted: false
 };
 
 export default {
-  name: 'HomeView',
-  components: { AppTab, ResultPanel },
+  name: "HomeView",
+  components: { AppTab, ResultPanel, WeatherDisplay },
   data() {
     return {
       tabIndex: 0,
+      forecastCity: DEFAULT_CITY,
       employee: {
-        ...employeeTabSettings,
-        state: { ...initialState },
+        ...TAB_SETTING.EMPLOYEE,
+        state: { ...initialState }
       },
       employer: {
-        ...employerTabSettings,
-        state: { ...initialState },
-      },
+        ...TAB_SETTING.EMPLOYER,
+        state: { ...initialState }
+      }
     };
   },
   computed: {
@@ -58,11 +59,11 @@ export default {
     },
     tabs: function() {
       return [this.employee, this.employer];
-    },
+    }
   },
   methods: {
     displayModal: function(showModal) {
-      const modal = this.$refs['result-modal'];
+      const modal = this.$refs["result-modal"];
       showModal ? modal.show() : modal.hide();
     },
     resetStateValues: function() {
@@ -75,8 +76,11 @@ export default {
       if (this.shouldShowResult) {
         this.displayModal(true);
       }
-    },
+    }
   },
+  created: function() {
+    getWeatherInCity("London");
+  }
 };
 </script>
 

@@ -60,3 +60,8 @@ button {
     color: map-get($color, white);
   }
 }
+
+.modal-header .close {
+  width: 40px;
+  padding: 0;
+}
