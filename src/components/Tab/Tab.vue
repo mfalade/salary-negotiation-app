@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleFormSubmit">
-    <h2>{{ id }}</h2>
+    <h2>{{ id | capitalize }}</h2>
     <template v-if="!state.isFormSubmitted">
       <base-input
         v-model.number="state.inputValue"
