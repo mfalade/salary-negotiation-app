@@ -2,17 +2,8 @@
   <section id="home">
     <b-card no-body>
       <b-tabs lazy pills card vertical v-model="tabIndex">
-        <b-tab title="Employee view">
-          <app-tab
-            v-bind="employee"
-            @input-value-submitted="showModalOnReady"
-          />
-        </b-tab>
-        <b-tab title="Employer view">
-          <app-tab
-            v-bind="employer"
-            @input-value-submitted="showModalOnReady"
-          />
+        <b-tab v-for="tab in tabs" v-bind:key="tab.id" :title="`${tab.id} tab`">
+          <app-tab v-bind="tab" @input-value-submitted="showModalOnReady" />
         </b-tab>
       </b-tabs>
     </b-card>
@@ -64,6 +55,9 @@ export default {
     },
     isSuccess: function() {
       return this.employer.state.inputValue >= this.employee.state.inputValue;
+    },
+    tabs: function() {
+      return [this.employee, this.employer];
     },
   },
   methods: {

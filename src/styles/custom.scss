@@ -31,6 +31,7 @@ button {
 
 .nav-pills .nav-link {
   font-weight: bold;
+  text-transform: capitalize;
   &:active {
     outline: none;
     border: none;
