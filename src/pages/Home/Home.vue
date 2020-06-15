@@ -8,45 +8,51 @@
       </b-tabs>
     </b-card>
     <div class="mt-4 text-center">
-      <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3">Start Over</b-button>
+      <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3"
+        >Start Over</b-button
+      >
     </div>
     <b-modal ref="result-modal" hide-footer>
       <result-panel
         :employeesExpectation="employee.state.inputValue"
         :employersOffering="employer.state.inputValue"
       />
-      <weather-display :city="forecastCity" />
+      <weather-display :weather="weather" />
     </b-modal>
   </section>
 </template>
 
 <script>
-import AppTab from "@/components/Tab/Tab.vue";
-import ResultPanel from "@/components/ResultPanel/ResultPanel.vue";
-import WeatherDisplay from "@/components/WeatherDisplay/WeatherDisplay.vue";
-import { TAB_SETTING, DEFAULT_CITY } from "@/constants";
-import { getWeatherInCity } from "@/services/weather";
+import AppTab from '@/components/Tab/Tab.vue';
+import ResultPanel from '@/components/ResultPanel/ResultPanel.vue';
+import WeatherDisplay from '@/components/WeatherDisplay/WeatherDisplay.vue';
+import { TAB_SETTING, DEFAULT_CITY } from '@/constants';
+import { getWeatherInCity } from '@/services/weather';
 
 const initialState = {
   inputValue: null,
-  isFormSubmitted: false
+  isFormSubmitted: false,
 };
 
 export default {
-  name: "HomeView",
+  name: 'HomeView',
   components: { AppTab, ResultPanel, WeatherDisplay },
   data() {
     return {
       tabIndex: 0,
-      forecastCity: DEFAULT_CITY,
+      weather: {
+        city: DEFAULT_CITY,
+        data: {},
+        error: null,
+      },
       employee: {
         ...TAB_SETTING.EMPLOYEE,
-        state: { ...initialState }
+        state: { ...initialState },
       },
       employer: {
         ...TAB_SETTING.EMPLOYER,
-        state: { ...initialState }
-      }
+        state: { ...initialState },
+      },
     };
   },
   computed: {
@@ -61,11 +67,11 @@ export default {
     },
     tabs: function() {
       return [this.employee, this.employer];
-    }
+    },
   },
   methods: {
     displayModal: function(showModal) {
-      const modal = this.$refs["result-modal"];
+      const modal = this.$refs['result-modal'];
       showModal ? modal.show() : modal.hide();
     },
     resetStateValues: function() {
@@ -78,11 +84,15 @@ export default {
       if (this.shouldShowResult) {
         this.displayModal(true);
       }
-    }
+    },
   },
-  created: function() {
-    getWeatherInCity("London");
-  }
+  created: async function() {
+    const response = await getWeatherInCity(DEFAULT_CITY);
+    this.weather = {
+      ...this.weather,
+      ...response,
+    };
+  },
 };
 </script>
 

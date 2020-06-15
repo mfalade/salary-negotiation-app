@@ -13,11 +13,11 @@
     <div class="mt-3">
       <p class="mb-3">
         Employee's minimum expectation:
-        <span>{{ employeesExpectation | currency }}</span>
+        <strong>{{ employeesExpectation | currency }}</strong>
       </p>
       <p class="mb-2">
         Employer's maximum offering:
-        <span>{{ employersOffering | currency }}</span>
+        <strong>{{ employersOffering | currency }}</strong>
       </p>
     </div>
   </section>
