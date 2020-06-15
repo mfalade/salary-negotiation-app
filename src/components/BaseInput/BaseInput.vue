@@ -6,6 +6,7 @@
         v-bind="$attrs"
         :value="value"
         @input="$emit('input', $event.target.value)"
+        class="form-control"
       />
     </label>
   </div>

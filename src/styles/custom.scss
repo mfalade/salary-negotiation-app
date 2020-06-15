@@ -1,0 +1,61 @@
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+button {
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 160px;
+  
+  &.btn {
+    background: map-get($color, green);
+    transition: background map-get($transition, md);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: darken(map-get($color, green), 10%);
+    }
+  }
+}
+
+.btn,
+.nav-pills .nav-link,
+.alert {
+  border-radius: 0;
+  border: none;
+}
+
+.nav-pills .nav-link {
+  font-weight: bold;
+  &:active {
+    outline: none;
+    border: none;
+  }
+  &.active {
+    transition: background map-get($transition, md);
+    background: darken(map-get($color, green), 10%);
+  }
+}
+
+.alert {
+  &.alert-success {
+    background: map-get($color, green);
+    color: map-get($color, white);
+  }
+
+  &.alert-danger {
+    background: map-get($color, red);
+    color: map-get($color, white);
+  }
+}
+
+.card-header {
+  background: map-get($color, green);
+  a {
+    color: map-get($color, white);
+  }
+}

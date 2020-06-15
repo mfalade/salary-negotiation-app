@@ -1,13 +1,13 @@
 <template>
   <section>
+    <b-alert :show="isSuccess" variant="success">Success!</b-alert>
+    <b-alert :show="!isSuccess" variant="danger">Failure!</b-alert>
     <div>
       <p>
-        Employee's minium expectation: {{ employeesExpectation | currency }}
+        Employee's minimum expectation: {{ employeesExpectation | currency }}
       </p>
       <p>Employer's maximum offering: {{ employersOffering | currency }}</p>
     </div>
-
-    <h4>{{ verdict }}!</h4>
   </section>
 </template>
 
@@ -19,9 +19,8 @@ export default {
     employersOffering: Number,
   },
   computed: {
-    verdict: function() {
-      const isSuccess = this.employersOffering >= this.employeesExpectation;
-      return isSuccess ? 'Success' : 'Failure';
+    isSuccess: function() {
+      return this.employersOffering >= this.employeesExpectation;
     },
   },
 };

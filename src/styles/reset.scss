@@ -1,0 +1,19 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
+html,
+body {
+  background: linear-gradient(
+    80deg,
+    map-get($color, gray3),
+    map-get($color, gray4)
+  );
+}
+
+h1, h2, h3, h4, h5,h6 {
+  color: map-get($color, gray2);
+}

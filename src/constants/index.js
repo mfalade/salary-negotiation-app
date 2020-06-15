@@ -1,9 +1,9 @@
 export const employeeTabSettings = {
   id: 'employee',
-  description: 'This is my employee tab',
+  description: 'Please provide your desired salary in Euros',
 };
 
 export const employerTabSettings = {
   id: 'employer',
-  description: 'This is my employer tab',
+  description: 'Please enter your best offer in Euros',
 };

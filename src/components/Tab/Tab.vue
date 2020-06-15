@@ -1,21 +1,24 @@
 <template>
-  <form @submit.prevent="handleFormSubmit">
-    <h2>{{ id | capitalize }}</h2>
-    <template v-if="!state.isFormSubmitted">
-      <base-input
-        v-model.number="state.inputValue"
-        :label="description"
-        placeholder="0"
-        type="number"
-        min="0"
-      />
-      <button type="submit">Submit</button>
-    </template>
+  <div class="d-flex justify-content-center align-items-center app-tab">
+    <form @submit.prevent="handleFormSubmit">
+      <h2>{{ id | capitalize }} dashboard</h2>
+      <div v-if="!state.isFormSubmitted">
+        <base-input
+          v-model.number="state.inputValue"
+          :label="description"
+          placeholder="0"
+          type="number"
+          required
+          min="0"
+        />
+        <b-button type="submit" class="mt-3">Submit</b-button>
+      </div>
 
-    <template v-else>
-      <p>You have successfully set your desired value.</p>
-    </template>
-  </form>
+      <template v-else>
+        <p>You have successfully set your desired value.</p>
+      </template>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -35,7 +38,10 @@ export default {
         return;
       }
       this.state.isFormSubmitted = true;
+      this.$emit('input-value-submitted');
     },
   },
 };
 </script>
+
+<style src="./Tab.scss" lang="scss" scoped></style>

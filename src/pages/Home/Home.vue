@@ -1,17 +1,31 @@
 <template>
-  <main>
-    <section>
-      <app-tab v-bind="employee" />
-      <app-tab v-bind="employer" />
-    </section>
-    <section v-if="isTabValuesProvided">
+  <section id="home">
+    <b-card no-body>
+      <b-tabs pills card vertical>
+        <b-tab title="Employee view">
+          <app-tab
+            v-bind="employee"
+            @input-value-submitted="showModalOnReady"
+          />
+        </b-tab>
+        <b-tab title="Employer view">
+          <app-tab
+            v-bind="employer"
+            @input-value-submitted="showModalOnReady"
+          />
+        </b-tab>
+      </b-tabs>
+    </b-card>
+    <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3">
+      Start Over
+    </b-button>
+    <b-modal ref="result-modal" hide-footer>
       <result-panel
         :employeesExpectation="employee.state.inputValue"
         :employersOffering="employer.state.inputValue"
       />
-      <button @click="resetStateValues">Start Over</button>
-    </section>
-  </main>
+    </b-modal>
+  </section>
 </template>
 
 <script>
@@ -41,7 +55,7 @@ export default {
     };
   },
   computed: {
-    isTabValuesProvided: function() {
+    shouldShowResult: function() {
       return (
         Boolean(this.employee.state.isFormSubmitted) &&
         Boolean(this.employer.state.isFormSubmitted)
@@ -52,9 +66,19 @@ export default {
     },
   },
   methods: {
+    displayModal: function(showModal) {
+      const modal = this.$refs['result-modal'];
+      showModal ? modal.show() : modal.hide();
+    },
     resetStateValues: function() {
       this.employee.state = { ...initialState };
       this.employer.state = { ...initialState };
+      this.displayModal(false);
+    },
+    showModalOnReady: function() {
+      if (this.shouldShowResult) {
+        this.displayModal(true);
+      }
     },
   },
 };
