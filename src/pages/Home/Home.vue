@@ -1,7 +1,7 @@
 <template>
   <section id="home">
     <b-card no-body>
-      <b-tabs pills card vertical>
+      <b-tabs pills card vertical v-model="tabIndex">
         <b-tab title="Employee view">
           <app-tab
             v-bind="employee"
@@ -44,6 +44,7 @@ export default {
   components: { AppTab, ResultPanel },
   data() {
     return {
+      tabIndex: 0,
       employee: {
         ...employeeTabSettings,
         state: { ...initialState },
@@ -73,6 +74,7 @@ export default {
     resetStateValues: function() {
       this.employee.state = { ...initialState };
       this.employer.state = { ...initialState };
+      this.tabIndex = 0;
       this.displayModal(false);
     },
     showModalOnReady: function() {
