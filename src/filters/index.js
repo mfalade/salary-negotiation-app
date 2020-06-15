@@ -1,7 +1,9 @@
 import Vue from 'vue';
 
-import capitalize from './capitalize';
+import capitalizeFilter from './capitalize';
+import currencyFilter from './currency';
 
 export const registerFilters = () => {
-  Vue.filter('capitalize', capitalize);
+  Vue.filter('capitalize', capitalizeFilter);
+  Vue.filter('currency', currencyFilter);
 };

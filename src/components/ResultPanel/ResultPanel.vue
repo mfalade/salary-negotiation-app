@@ -1,8 +1,10 @@
 <template>
   <section>
     <div>
-      <p>Employee's minium expectation: {{ employeesExpectation }}</p>
-      <p>Employer's maximum offering: {{ employersOffering }}</p>
+      <p>
+        Employee's minium expectation: {{ employeesExpectation | currency }}
+      </p>
+      <p>Employer's maximum offering: {{ employersOffering | currency }}</p>
     </div>
 
     <h4>{{ verdict }}!</h4>
