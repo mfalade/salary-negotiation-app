@@ -1,18 +1,20 @@
 <template>
   <main id="app">
     <b-container>
-      <h3 class="mt-5 pt-5 text-center">Salary Negotiation App</h3>
-      <HomePage />
+      <app-header />
+      <home-page />
     </b-container>
   </main>
 </template>
 
 <script>
 import HomePage from '@/pages/Home/Home.vue';
+import AppHeader from '@/components/AppHeader/AppHeader.vue';
 
 export default {
   name: 'App',
   components: {
+    AppHeader,
     HomePage,
   },
 };

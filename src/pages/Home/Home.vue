@@ -7,7 +7,9 @@
         </b-tab>
       </b-tabs>
     </b-card>
-    <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3">Start Over</b-button>
+    <div class="mt-4 text-center">
+      <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3">Start Over</b-button>
+    </div>
     <b-modal ref="result-modal" hide-footer>
       <result-panel
         :employeesExpectation="employee.state.inputValue"

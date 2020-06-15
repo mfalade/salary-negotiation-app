@@ -1,17 +1,35 @@
 <template>
-  <section>
-    <b-alert :show="isSuccess" variant="success">Success!</b-alert>
-    <b-alert :show="!isSuccess" variant="danger">Failure!</b-alert>
-    <div>
-      <p class="mb-3">Employee's minimum expectation: {{ employeesExpectation | currency }}</p>
-      <p class="mb-3">Employer's maximum offering: {{ employersOffering | currency }}</p>
+  <section class="text-center">
+    <div class="my-3">
+      <div v-if="isSuccess">
+        <icon-success />
+        <h4 class="text-success mt-3">Success!</h4>
+      </div>
+      <div v-else>
+        <icon-failure />
+        <h4 class="text-danger mt-3">Failure!</h4>
+      </div>
+    </div>
+    <div class="mt-3">
+      <p class="mb-3">
+        Employee's minimum expectation:
+        <span>{{ employeesExpectation | currency }}</span>
+      </p>
+      <p class="mb-2">
+        Employer's maximum offering:
+        <span>{{ employersOffering | currency }}</span>
+      </p>
     </div>
   </section>
 </template>
 
 <script>
+import IconSuccess from "@/components/Icons/Success.vue";
+import IconFailure from "@/components/Icons/Failure.vue";
+
 export default {
   name: "ResultPanel",
+  components: { IconSuccess, IconFailure },
   props: {
     employeesExpectation: Number,
     employersOffering: Number

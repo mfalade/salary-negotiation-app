@@ -1,0 +1,18 @@
+@import '@/styles/variables.scss';
+
+svg {
+  height: 80px;
+  width: 80px;
+
+  &.success {
+    path {
+      fill: map-get($color, green);
+    }
+  }
+  
+  &.danger {
+    path {
+      fill: map-get($color, red);
+    }
+  }
+}

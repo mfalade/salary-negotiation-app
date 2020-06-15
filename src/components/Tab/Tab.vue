@@ -15,22 +15,24 @@
       </div>
 
       <template v-else>
-        <p>You have successfully set your desired value.</p>
+        <div class="text-center mt-4">
+          <p class="mt-2">You have successfully entered your desired value.</p>
+        </div>
       </template>
     </form>
   </div>
 </template>
 
 <script>
-import BaseInput from '@/components/BaseInput/BaseInput.vue';
+import BaseInput from "@/components/BaseInput/BaseInput.vue";
 
 export default {
-  name: 'AppTab',
+  name: "AppTab",
   components: { BaseInput },
   props: {
     id: { type: String, isRequired: true },
     description: { type: String, isRequired: true },
-    state: { type: Object, isRequired: true },
+    state: { type: Object, isRequired: true }
   },
   methods: {
     handleFormSubmit: function() {
@@ -38,9 +40,9 @@ export default {
         return;
       }
       this.state.isFormSubmitted = true;
-      this.$emit('input-value-submitted');
-    },
-  },
+      this.$emit("input-value-submitted");
+    }
+  }
 };
 </script>
 

@@ -65,3 +65,11 @@ button {
   width: 40px;
   padding: 0;
 }
+
+.text-success {
+  color: map-get($color, green)!important;
+}
+
+.text-danger {
+  color: map-get($color, red) !important;
+}

@@ -3,7 +3,6 @@
     <br />
     <h5>Current weather in {{ city }}.</h5>
     <b-list-group class="mt-4">
-      <b-list-group-item>Day:</b-list-group-item>
       <b-list-group-item>Rain:</b-list-group-item>
       <b-list-group-item>Cloudy:</b-list-group-item>
       <b-list-group-item>Sunshine:</b-list-group-item>
