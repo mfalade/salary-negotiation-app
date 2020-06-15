@@ -1,7 +1,7 @@
 <template>
   <section id="home">
     <b-card no-body>
-      <b-tabs pills card vertical v-model="tabIndex">
+      <b-tabs lazy pills card vertical v-model="tabIndex">
         <b-tab title="Employee view">
           <app-tab
             v-bind="employee"

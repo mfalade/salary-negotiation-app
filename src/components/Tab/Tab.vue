@@ -5,10 +5,10 @@
       <div v-if="!state.isFormSubmitted">
         <base-input
           v-model.number="state.inputValue"
+          required
           :label="description"
           placeholder="0"
           type="number"
-          required
           min="0"
         />
         <b-button type="submit" class="mt-3">Submit</b-button>

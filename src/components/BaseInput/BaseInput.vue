@@ -3,6 +3,7 @@
     <label>
       <p>{{ label }}</p>
       <input
+        v-focus
         v-bind="$attrs"
         :value="value"
         @input="$emit('input', $event.target.value)"
