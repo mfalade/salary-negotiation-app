@@ -9,6 +9,7 @@
         :employeesExpectation="employee.state.inputValue"
         :employersOffering="employer.state.inputValue"
       />
+      <button @click="resetStateValues">Start Over</button>
     </section>
   </main>
 </template>
@@ -17,26 +18,25 @@
 import AppTab from '@/components/Tab/Tab.vue';
 import ResultPanel from '@/components/ResultPanel/ResultPanel.vue';
 
+import { employeeTabSettings, employerTabSettings } from '@/constants';
+
+const initialState = {
+  inputValue: null,
+  isFormSubmitted: false,
+};
+
 export default {
   name: 'HomeView',
   components: { AppTab, ResultPanel },
   data() {
     return {
       employee: {
-        id: 'employee',
-        description: 'This is my employee tab',
-        state: {
-          inputValue: null,
-          isFormSubmitted: false,
-        },
+        ...employeeTabSettings,
+        state: { ...initialState },
       },
       employer: {
-        id: 'employer',
-        description: 'This is my employer tab',
-        state: {
-          inputValue: null,
-          isFormSubmitted: false,
-        },
+        ...employerTabSettings,
+        state: { ...initialState },
       },
     };
   },
@@ -49,6 +49,12 @@ export default {
     },
     isSuccess: function() {
       return this.employer.state.inputValue >= this.employee.state.inputValue;
+    },
+  },
+  methods: {
+    resetStateValues: function() {
+      this.employee.state = { ...initialState };
+      this.employer.state = { ...initialState };
     },
   },
 };
