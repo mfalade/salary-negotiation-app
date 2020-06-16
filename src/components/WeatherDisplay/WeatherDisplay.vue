@@ -3,10 +3,7 @@
     <br />
     <h5>Current weather in {{ weather.city }}.</h5>
     <b-list-group class="mt-4" v-if="!weather.error">
-      <b-list-group-item
-        v-for="dataPoint in dataPoints"
-        v-bind:key="dataPoint.name"
-      >
+      <b-list-group-item v-for="dataPoint in dataPoints" :key="dataPoint.name">
         {{ dataPoint.name }}:
         <strong>{{ dataPoint.value }} </strong>
         {{ dataPoint.unit }}
@@ -32,8 +29,8 @@ export default {
       return [
         {
           name: 'Temperature',
-          value: get(this.weather, 'data.main.temp'),
-          unit: 'Kelvin',
+          value: Math.round(get(this.weather, 'data.main.temp', 0) - 273.15),
+          unit: '°C',
         },
         {
           name: 'Pressure',
