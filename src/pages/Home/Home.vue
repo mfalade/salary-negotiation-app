@@ -2,7 +2,7 @@
   <section id="home">
     <b-card no-body>
       <b-tabs lazy pills card vertical v-model="tabIndex">
-        <b-tab v-for="tab in tabs" v-bind:key="tab.id" :title="`${tab.id} tab`">
+        <b-tab v-for="tab in tabs" :key="tab.id" :title="`${tab.id} tab`">
           <app-tab v-bind="tab" @input-value-submitted="showModalOnReady" />
         </b-tab>
       </b-tabs>
@@ -32,7 +32,7 @@ import AppTab from '@/components/Tab/Tab.vue';
 import ResultPanel from '@/components/ResultPanel/ResultPanel.vue';
 import WeatherDisplay from '@/components/WeatherDisplay/WeatherDisplay.vue';
 import { TAB_SETTING, DEFAULT_CITY } from '@/constants';
-import { getWeatherInCity } from '@/services/weather';
+import { getCurrentWeather } from '@/services/weather';
 
 const initialState = {
   inputValue: null,
@@ -63,8 +63,8 @@ export default {
   computed: {
     shouldShowResult: function() {
       return (
-        Boolean(this.employee.state.isFormSubmitted) &&
-        Boolean(this.employer.state.isFormSubmitted)
+        this.employee.state.isFormSubmitted &&
+        this.employer.state.isFormSubmitted
       );
     },
     isSuccess: function() {
@@ -92,11 +92,7 @@ export default {
     },
   },
   created: async function() {
-    const response = await getWeatherInCity(DEFAULT_CITY);
-    this.weather = {
-      ...this.weather,
-      ...response,
-    };
+    this.weather = await getCurrentWeather(DEFAULT_CITY);
   },
 };
 </script>

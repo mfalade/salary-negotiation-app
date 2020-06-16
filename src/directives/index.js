@@ -2,6 +2,6 @@ import Vue from 'vue';
 
 import focusDirective from './focus';
 
-export const registerDirectives = () => {
+export default () => {
   Vue.directive('focus', focusDirective);
 };

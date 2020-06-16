@@ -3,7 +3,7 @@ import get from 'lodash/get';
 
 import { WEATHER_SERVICE, DEFAULT_CITY } from '@/constants';
 
-const getWeatherInCity = async (city = DEFAULT_CITY) => {
+const getCurrentWeather = async (city = DEFAULT_CITY) => {
   const weather = {
     city,
     data: {},
@@ -21,4 +21,4 @@ const getWeatherInCity = async (city = DEFAULT_CITY) => {
   }
 };
 
-export { getWeatherInCity };
+export { getCurrentWeather };
