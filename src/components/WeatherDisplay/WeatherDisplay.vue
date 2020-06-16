@@ -1,5 +1,5 @@
 <template>
-  <article class="mt-4">
+  <article class="mt-4" data-cy="weather-display">
     <br />
     <h5>Current weather in {{ weather.city }}.</h5>
     <b-list-group class="mt-4" v-if="!weather.error">

@@ -2,18 +2,24 @@
   <section class="d-flex justify-content-center align-items-center app-tab">
     <div>
       <h2>{{ id | capitalize }} dashboard</h2>
-      <form v-if="!state.isFormSubmitted" @submit.prevent="handleFormSubmit">
+      <form
+        v-if="!state.isFormSubmitted"
+        @submit.prevent="handleFormSubmit"
+        data-cy="form-wrapper"
+      >
         <base-input
-          v-model.number="state.inputValue"
           required
+          v-model.number="state.inputValue"
           :label="description"
           placeholder="0"
           type="number"
           min="0"
         />
-        <b-button type="submit" class="mt-3">Submit</b-button>
+        <b-button type="submit" class="mt-3" data-cy="submit-button">
+          Submit
+        </b-button>
       </form>
-      <div v-else class="text-center mt-4">
+      <div v-else class="text-center mt-4" data-cy="confirmation-message">
         Your value has been registered
       </div>
     </div>

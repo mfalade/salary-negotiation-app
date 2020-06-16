@@ -8,6 +8,7 @@
         :value="value"
         @input="$emit('input', $event.target.value)"
         class="form-control"
+        data-cy="value-input"
       />
     </label>
   </div>

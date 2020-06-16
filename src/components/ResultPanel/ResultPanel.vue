@@ -1,5 +1,5 @@
 <template>
-  <section class="text-center">
+  <section class="text-center" data-cy="resultPanel">
     <div class="my-3">
       <div v-if="isSuccess">
         <icon-success />

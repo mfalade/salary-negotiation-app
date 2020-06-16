@@ -8,9 +8,14 @@
       </b-tabs>
     </b-card>
     <div class="mt-4 text-center">
-      <b-button v-if="shouldShowResult" @click="resetStateValues" class="mt-3"
-        >Start Over</b-button
+      <b-button
+        v-if="shouldShowResult"
+        @click="resetStateValues"
+        class="mt-3"
+        data-cy="reset-button"
       >
+        Start Over
+      </b-button>
     </div>
     <b-modal ref="result-modal" hide-footer>
       <result-panel
