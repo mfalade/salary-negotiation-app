@@ -1,34 +1,40 @@
-# sennder-test
+# Salary Negotiation App - VueJs
 
-## Project setup
-```
-yarn install
-```
+## Getting started
 
-### Compiles and hot-reloads for development
+- Clone the repository and install the necessary dependencies with
+
+  ```
+  yarn install
+  ```
+
+- I have included an API key that you can test the app with in the `.env.example` file (Ideally, I would share keys like this privately). Copy this value to a `.env` file in the root of the project before starting the app or creating a production bundle.
+
+## Available scripts:
+
+### Run the app locally
+
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Create a minified production build
+
 ```
 yarn build
 ```
 
-### Run your unit tests
+### Run unit tests
+
 ```
 yarn test:unit
 ```
 
-### Run your end-to-end tests
+### Run end to end tests
+
 ```
 yarn test:e2e
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Please Note: This is my first attempt at VueJs and a lot of the patterns I'm using here are from my experience with ReactJs.
+I'm happy to get feedback on what could have been improved :)
