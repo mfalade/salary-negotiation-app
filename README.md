@@ -35,6 +35,3 @@ yarn test:unit
 ```
 yarn test:e2e
 ```
-
-Please Note: This is my first attempt at VueJs and a lot of the patterns I'm using here are from my experience with ReactJs.
-I'm happy to get feedback on what could have been improved :)
